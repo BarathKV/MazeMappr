@@ -6,7 +6,6 @@
 
 class grid_maze {
    public:
-    // Constructor
     grid_maze(int width, int height) {
         this->width = width;
         this->height = height;

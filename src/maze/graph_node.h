@@ -2,7 +2,7 @@
 #define GRAPH_NODE_H
 
 #include <map>
-#include "direction.h"
+#include <direction.h>
 
 class graph_node {
     // store x and y coord

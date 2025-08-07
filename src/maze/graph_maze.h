@@ -10,10 +10,10 @@ class graph_maze {
     int rows, cols;
 
     // start of the maze
-    GraphNode* startNode;
+    graph_node* startNode;
 
     // end of the maze
-    GraphNode* endNode;
+    graph_node* endNode;
 
    public:
     // Constructor that initializes the maze with a grid size

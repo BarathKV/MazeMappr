@@ -10,37 +10,37 @@ class maze_code {
     // enum of the Unicode char as the value word
     enum maze_code_value {
         //" "
-        None,                      // 0000
+        None,  // 0000
         // ╵
-        Up = 1 << 0,               // 0001
+        Up = 1 << 0,  // 0001
         // ╶
-        Right = 1 << 1,            // 0010
+        Right = 1 << 1,  // 0010
         // ╷
-        Down = 1 << 2,             // 0100
+        Down = 1 << 2,  // 0100
         // ╴
-        Left = 1 << 3,             // 1000
+        Left = 1 << 3,  // 1000
         // ┌
-        Right_Down = Right | Down, // 0110
+        Right_Down = Right | Down,  // 0110
         // ┐
-        Left_Down = Left | Down,   // 1100
+        Left_Down = Left | Down,  // 1100
         // └
-        Right_Up = Right | Up,     // 0011
+        Right_Up = Right | Up,  // 0011
         // ┘
-        Left_Up = Left | Up,       // 1001
+        Left_Up = Left | Up,  // 1001
         // ─
-        Horizontal = Left | Right, // 1010
+        Horizontal = Left | Right,  // 1010
         // │
-        Vertical = Up | Down,      // 0101
+        Vertical = Up | Down,  // 0101
         // ┬
-        notUp = ~Up,               // 1110
+        notUp = Left | Down | Right,  // 1110
         // ┴
-        notDown = ~Down,           // 1011
+        notDown = Up | Right | Left,  // 1011
         // ├
-        notLeft = ~Left,           // 1101
+        notLeft = Up | Down | Right,  // 0111
         // ┤
-        notRight = ~Right,         // 1110
+        notRight = Up | Down | Left,  // 1101
         // ┼
-        All = ~None                // 1111
+        All = Up | Down | Left | Right  // 1111
     };
 
     // enum value for the Unicode char
@@ -80,23 +80,39 @@ class maze_code {
         return "?";  // Or any other default value like "unknown"
     }
 
-   private:
     // iterator for the reference table
-    static std::map<maze_code_value, std::string>::iterator it;
+    // static std::map<maze_code_value, std::string>::iterator it;
 
     // reference table for the enum value to Unicode char
-    const std::map<maze_code_value, std::string> reftable = {
+    std::map<maze_code_value, std::string> reftable = {
         {None, u8" "},
 
-        {Right_Down, u8"┌"},    {Left_Down, u8"┐"},
-        {Right_Up, u8"└"}, {Left_Up, u8"┘"},
+        {Up, u8"╵"},         {Right, u8"╶"},
+        {Down, u8"╷"},       {Left, u8"╴"},
 
-        {Horizontal, u8"─"},  {Vertical, u8"│"},
+        {Right_Down, u8"┌"}, {Left_Down, u8"┐"},
+        {Right_Up, u8"└"},   {Left_Up, u8"┘"},
 
-        {notUp, u8"┬"},     {notDown, u8"┴"},
+        {Horizontal, u8"─"}, {Vertical, u8"│"},
+
+        {notUp, u8"┬"},      {notDown, u8"┴"},
         {notLeft, u8"├"},    {notRight, u8"┤"},
 
         {All, u8"┼"}};
+
+    static const std::map<std::string, maze_code::maze_code_value>
+        reverse_reftable;
 };
+
+const std::map<std::string, maze_code::maze_code_value>
+    maze_code::reverse_reftable = {
+        {u8" ", maze_code::None},      {u8"╵", maze_code::Up},
+        {u8"╶", maze_code::Right},     {u8"╷", maze_code::Down},
+        {u8"╴", maze_code::Left},      {u8"┌", maze_code::Right_Down},
+        {u8"┐", maze_code::Left_Down}, {u8"└", maze_code::Right_Up},
+        {u8"┘", maze_code::Left_Up},   {u8"─", maze_code::Horizontal},
+        {u8"│", maze_code::Vertical},  {u8"┬", maze_code::notUp},
+        {u8"┴", maze_code::notDown},   {u8"├", maze_code::notLeft},
+        {u8"┤", maze_code::notRight},  {u8"┼", maze_code::All}};
 
 #endif
