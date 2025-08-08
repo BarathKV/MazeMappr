@@ -97,17 +97,17 @@ node_state get_nodeState_from_set(std::set<int> connectedSides) {
 }
 
 void Printer::print(const grid_maze& maze) const {
-    std::cout << "Printing grid maze..." << std::endl;
+    // std::cout << "Printing grid maze..." << std::endl;
     std::vector<std::vector<maze_code>> printable_grid;
     printable_grid.resize(1 + (maze.getWidth()) * 2,
                           std::vector<maze_code>(1 + (maze.getHeight() * 4),
                                                  maze_code(maze_code::None)));
-    std::cout << "Grid size is" << " " << maze.getWidth() << "x"
-              << maze.getHeight() << std::endl;
+    // std::cout << "Grid size is" << " " << maze.getWidth() << "x"
+    //           << maze.getHeight() << std::endl;
     for (int r = 0; r < maze.getHeight(); r++) {
         for (int c = 0; c < maze.getWidth(); c++) {
-            std::cout << "maze cell " << r << "," << c << " has size "
-                      << maze.maze[r][c].size() << std::endl;
+            // std::cout << "maze cell " << r << "," << c << " has size "
+            //           << maze.maze[r][c].size() << std::endl;
             node_state ns(node_state::none);
             ns = get_nodeState_from_set(maze.maze[r][c]);
             std::vector<std::vector<std::string>> template_str =
@@ -116,7 +116,7 @@ void Printer::print(const grid_maze& maze) const {
                 template_str.size(),
                 std::vector<maze_code>(template_str[0].size(),
                                        maze_code(maze_code::None)));
-            std::cout << "Processing cell " << r << "," << c << std::endl;
+            // std::cout << "Processing cell " << r << "," << c << std::endl;
             for (int i = 0; i < template_str.size(); ++i) {
                 for (int j = 0; j < template_str[i].size(); ++j) {
                     // std::cout << "template_str[" << i << "][" << j <<

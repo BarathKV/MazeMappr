@@ -10,7 +10,7 @@
 
 class Printer {
    public:
-    Printer() { std::cout << "Printer initialized." << std::endl; }
+    // Printer() { std::cout << "Printer initialized." << std::endl; }
 
     // // Function to print the graph based maze to the console
     // void print(const graph_maze& maze) const {
