@@ -76,8 +76,7 @@ class maze_code {
         if (it != reftable.end()) {
             return it->second;
         }
-        // Return a default character if not found
-        return "?";  // Or any other default value like "unknown"
+        return "?";
     }
 
     // iterator for the reference table
@@ -103,16 +102,4 @@ class maze_code {
     static const std::map<std::string, maze_code::maze_code_value>
         reverse_reftable;
 };
-
-const std::map<std::string, maze_code::maze_code_value>
-    maze_code::reverse_reftable = {
-        {u8" ", maze_code::None},      {u8"╵", maze_code::Up},
-        {u8"╶", maze_code::Right},     {u8"╷", maze_code::Down},
-        {u8"╴", maze_code::Left},      {u8"┌", maze_code::Right_Down},
-        {u8"┐", maze_code::Left_Down}, {u8"└", maze_code::Right_Up},
-        {u8"┘", maze_code::Left_Up},   {u8"─", maze_code::Horizontal},
-        {u8"│", maze_code::Vertical},  {u8"┬", maze_code::notUp},
-        {u8"┴", maze_code::notDown},   {u8"├", maze_code::notLeft},
-        {u8"┤", maze_code::notRight},  {u8"┼", maze_code::All}};
-
 #endif
