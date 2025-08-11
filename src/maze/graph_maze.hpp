@@ -1,29 +1,29 @@
-#ifndef GRAPH_MAZE_H
-#define GRAPH_MAZE_H
+#ifndef GRAPH_MAZE_HPP
+#define GRAPH_MAZE_HPP
 
-#include "graph_node.h"
+#include "graph_node.hpp"
 
 #include <string>
 
-class graph_maze {
+class GraphMaze {
     // size of the maze grid
     int rows, cols;
 
     // start of the maze
-    graph_node* startNode;
+    GraphNode* startNode;
 
     // end of the maze
-    graph_node* endNode;
+    GraphNode* endNode;
 
    public:
     // Constructor that initializes the maze with a grid size
-    graph_maze(const int rows, const int cols) {
+    GraphMaze(const int rows, const int cols) {
         this->rows = rows;
         this->cols = cols;
     }
 
     // Constructor that reads a maze from a file
-    graph_maze(const std::string& filename) {}
+    GraphMaze(const std::string& filename) {}
 };
 
 #endif

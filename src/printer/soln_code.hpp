@@ -1,14 +1,14 @@
-#ifndef SOLN_CODE_H
-#define SOLN_CODE_H
+#ifndef SOLN_CODE_HPP
+#define SOLN_CODE_HPP
 
 #include <iostream>
 #include <map>
 #include <string>
 
-class Soln_code {
+class SolnCode {
    public:
     // enum of the Unicode char as the value word
-    enum Soln_Code_Value {
+    enum SolnCodeValue {
         //" "
         None,
 
@@ -40,22 +40,22 @@ class Soln_code {
     };
 
     // enum value for the Unicode char
-    Soln_Code_Value value;
+    SolnCodeValue value;
 
     // Default constructor for Code
-    Soln_code() = default;
+    SolnCode() = default;
 
     // Constructor of Code with a enum value
-    Soln_code(const Soln_Code_Value avalue) : value(avalue) {}
+    SolnCode(const SolnCodeValue avalue) : value(avalue) {}
 
     //+ operator to add the enum values together
-    Soln_code operator+(const Soln_code a) const {};
+    SolnCode operator+(const SolnCode a) const {};
 
     //+= operator to add the enum values together
-    Soln_code& operator+=(const Soln_code a) {};
+    SolnCode& operator+=(const SolnCode a) {};
 
     // = operator to set the enum value
-    Soln_code& operator=(const Soln_Code_Value a) {};
+    SolnCode& operator=(const SolnCodeValue a) {};
 
     // Function to convert enum value to unicode char
     std::string toString() const {
@@ -71,21 +71,21 @@ class Soln_code {
 
    private:
     // iterator for the reference table
-    static std::map<Soln_Code_Value, std::string>::iterator it;
+    static std::map<SolnCodeValue, std::string>::iterator it;
 
     // reference table for the enum value to Unicode char
-    const std::map<Soln_Code_Value, std::string> reftable = {
-        {Soln_code::None, u8" "},
+    const std::map<SolnCodeValue, std::string> reftable = {
+        {SolnCode::None, u8" "},
 
-        {Soln_code::Left_Top, u8"╔"},    {Soln_code::Right_Top, u8"╗"},
-        {Soln_code::Left_Bottom, u8"╚"}, {Soln_code::Right_Bottom, u8"╝"},
+        {SolnCode::Left_Top, u8"╔"},    {SolnCode::Right_Top, u8"╗"},
+        {SolnCode::Left_Bottom, u8"╚"}, {SolnCode::Right_Bottom, u8"╝"},
 
-        {Soln_code::Horizontal, u8"═"},  {Soln_code::Vertical, u8"║"},
+        {SolnCode::Horizontal, u8"═"},  {SolnCode::Vertical, u8"║"},
 
-        {Soln_code::Top_Not, u8"╦"},     {Soln_code::Bottom_Not, u8"╩"},
-        {Soln_code::Left_Not, u8"╠"},    {Soln_code::Right_Not, u8"╣"},
+        {SolnCode::Top_Not, u8"╦"},     {SolnCode::Bottom_Not, u8"╩"},
+        {SolnCode::Left_Not, u8"╠"},    {SolnCode::Right_Not, u8"╣"},
 
-        {Soln_code::All, u8"╬"}};
+        {SolnCode::All, u8"╬"}};
 };
 
 #endif

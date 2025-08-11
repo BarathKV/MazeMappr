@@ -1,18 +1,24 @@
-#include "maze/grid_maze.h"
-#include "printer/maze_code.h"
-#include "printer/printer.h"
+#include "maze/grid_maze.hpp"
+#include "printer/maze_code.hpp"
+#include "printer/printer.hpp"
+#include "solution/grid_soln.hpp"
 
-#include "maze/grid_maze_gen.h"
+#include "maze/grid_maze_gen.hpp"
+#include "solution/grid_soln_gen.hpp"
+
+#include <windows.h>
 
 int main() {
+    SetConsoleOutputCP(CP_UTF8);
     std::cout << "Maze Code Example:" << std::endl;
-    grid_maze maze = grid_maze(10,10);
-    // maze.maze[0][0].insert(1);
-    // maze.maze[0][1].insert(3);
-    // maze.maze[1][0].insert(0);
-    // maze.maze[0][0].insert(2);
+    GridMaze maze = GridMaze(10,10);
     randDFSGeneration(maze);
     Printer printer;
     printer.print(maze);
+
+    std::cout << "Maze Solution Example:" << std::endl;
+    GridSoln soln(maze);
+    randomMouseSolnGen(soln);
+    printer.print(soln);
     return 0;
 }

@@ -1,14 +1,14 @@
-#ifndef MAZE_CODE_H
-#define MAZE_CODE_H
+#ifndef MAZE_CODE_HPP
+#define MAZE_CODE_HPP
 
 #include <iostream>
 #include <map>
 #include <string>
 
-class maze_code {
+class MazeCode {
    public:
     // enum of the Unicode char as the value word
-    enum maze_code_value {
+    enum MazeCodeValue {
         //" "
         None,  // 0000
         // ╵
@@ -44,27 +44,27 @@ class maze_code {
     };
 
     // enum value for the Unicode char
-    maze_code_value value;
+    MazeCodeValue value;
 
     // Default constructor for Code
-    maze_code() = default;
+    MazeCode() = default;
 
     // Constructor of Code with a enum value
-    maze_code(const maze_code_value avalue) : value(avalue) {}
+    MazeCode(const MazeCodeValue avalue) : value(avalue) {}
 
     //+= operator to add the enum values together
-    maze_code& operator+=(const maze_code& other) {
-        value = static_cast<maze_code_value>(value | other.value);
+    MazeCode& operator+=(const MazeCode& other) {
+        value = static_cast<MazeCodeValue>(value | other.value);
         return *this;
     }
 
     //+ operator to add the enum values together
-    maze_code operator+(const maze_code& other) const {
-        return maze_code(static_cast<maze_code_value>(value | other.value));
+    MazeCode operator+(const MazeCode& other) const {
+        return MazeCode(static_cast<MazeCodeValue>(value | other.value));
     }
 
     // = operator to set the enum value
-    maze_code& operator=(const maze_code_value a) {
+    MazeCode& operator=(const MazeCodeValue a) {
         value = a;
         return *this;
     };
@@ -76,14 +76,14 @@ class maze_code {
         if (it != reftable.end()) {
             return it->second;
         }
-        return "?";
+        return u8"?";
     }
 
     // iterator for the reference table
-    // static std::map<maze_code_value, std::string>::iterator it;
+    // static std::map<MazeCodeValue, std::string>::iterator it;
 
     // reference table for the enum value to Unicode char
-    std::map<maze_code_value, std::string> reftable = {
+    std::map<MazeCodeValue, std::string> reftable = {
         {None, u8" "},
 
         {Up, u8"╵"},         {Right, u8"╶"},
@@ -99,7 +99,7 @@ class maze_code {
 
         {All, u8"┼"}};
 
-    static const std::map<std::string, maze_code::maze_code_value>
+    static const std::map<std::string, MazeCode::MazeCodeValue>
         reverse_reftable;
 };
 #endif

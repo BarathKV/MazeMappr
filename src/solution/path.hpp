@@ -1,8 +1,8 @@
-#ifndef PATH_H
-#define PATH_H
+#ifndef PATH_HPP
+#define PATH_HPP
 
 #include <map>
-#include "direction.h"
+#include "direction.hpp"
 
 class Path {
     // store x and y coord

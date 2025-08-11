@@ -4,12 +4,9 @@
 
 #include <chrono>
 #include <random>
+#include <iostream>
 
-#include "grid_maze.h"
-
-std::vector<std::pair<int, int>> getUnvisitedNeighbors(std::pair<int, int> cell,
-                                                       int n,
-                                                       int m);
+#include "grid_maze.hpp"
 
 bool isInBounds(std::pair<int, int> cell, int n, int m) {
     return cell.first >= 0 && cell.first < n && cell.second >= 0 &&
@@ -38,7 +35,7 @@ std::vector<std::pair<int, int>> getUnvisitedNeighbors(
     return actualNeighbors;
 }
 
-void randDFSGeneration(grid_maze& maze) {
+void randDFSGeneration(GridMaze& maze) {
     // Choose the initial cell
     std::set<int> initCell = maze.maze[0][0];
     std::set<std::pair<int, int>> visited;
@@ -79,4 +76,5 @@ void randDFSGeneration(grid_maze& maze) {
             stack.push(selectedNeighbor);
         }
     }
+    std::cout << "Maze generation complete." << std::endl;
 }

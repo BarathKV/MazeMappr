@@ -1,15 +1,17 @@
-#ifndef GRID_MAZE_H
-#define GRID_MAZE_H
+#ifndef GRID_MAZE_HPP
+#define GRID_MAZE_HPP
 
 #include <set>
 #include <vector>
+#include <iostream>
 
-class grid_maze {
+class GridMaze {
    public:
-    grid_maze(int width, int height) {
+    GridMaze(int width, int height) {
         this->width = width;
         this->height = height;
         maze.resize(height, std::vector<std::set<int>>(width));
+        std::cout << "Maze created with dimensions: " << width << "x" << height << std::endl;
     }
 
     int getWidth() const { return width; }

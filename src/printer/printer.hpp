@@ -1,9 +1,10 @@
-#ifndef PRINTER_H
-#define PRINTER_H
+#ifndef PRINTER_HPP
+#define PRINTER_HPP
 
-#include "../maze/grid_maze.h"
-// #include "../maze/graph_maze.h"
-#include "node_states.h"
+#include "../maze/grid_maze.hpp"
+#include "../solution/grid_soln.hpp"
+// #include "../maze/graph_maze.hpp"
+#include "node_states.hpp"
 
 #include <iostream>
 
@@ -18,18 +19,18 @@ class Printer {
     // }
 
     // Function to print the grid based maze to a console
-    void print(const grid_maze& maze) const;
+    void print(const GridMaze& maze) const;
 
-    // // Function to print the solution to the console
-    // void print(const Solution& solution) const {
-    //     // Implementation for printing the solution
-    // }
+    // Function to print the solution to the console
+    void print(const GridSoln& solution) const {
+        // Implementation for printing the solution
+    }
 
-    // void save(const graph_maze& maze, const std::string& filename) const {
+    // void save(const GraphMaze& maze, const std::string& filename) const {
     //     // Implementation for saving the maze to a file
     // }
 
-    void save(const grid_maze& maze, const std::string& filename) const {
+    void save(const GridMaze& maze, const std::string& filename) const {
         // Implementation for saving the grid maze to a file
     }
 
