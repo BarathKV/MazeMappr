@@ -10,33 +10,42 @@ class SolnCode {
     // enum of the Unicode char as the value word
     enum SolnCodeValue {
         //" "
-        None,
+        None,  // 0000
+
+        // ╵
+        Up = 1 << 0,  // 0001
+        // ╶
+        Right = 1 << 1,  // 0010
+        // ╷
+        Down = 1 << 2,  // 0100
+        // ╴
+        Left = 1 << 3,  // 1000
 
         // ╔
-        Left_Top,
+        Left_Up = Left | Up,  // 0110
         // ╗
-        Right_Top,
+        Right_Up = Right | Up,  // 1100
         // ╚
-        Left_Bottom,
+        Left_Down = Left | Down,  // 0011
         // ╝
-        Right_Bottom,
+        Right_Down = Right | Down,  // 1001
 
         // ═
-        Horizontal,
+        Horizontal = Right | Left,  // 1010
         // ║
-        Vertical,
+        Vertical = Up | Down,  // 0101
 
         // ╦
-        Top_Not,
+        Up_Not = Down | Right | Left,  // 1110
         // ╩
-        Bottom_Not,
+        Down_Not = Up | Right | Left,  // 1011
         // ╠
-        Left_Not,
+        Left_Not = Right | Down | Up,  // 0111
         // ╣
-        Right_Not,
+        Right_Not = Left | Down | Up,  // 1101
 
         // ╬
-        All,
+        All,  // 1111
     };
 
     // enum value for the Unicode char
@@ -77,13 +86,16 @@ class SolnCode {
     const std::map<SolnCodeValue, std::string> reftable = {
         {SolnCode::None, u8" "},
 
-        {SolnCode::Left_Top, u8"╔"},    {SolnCode::Right_Top, u8"╗"},
-        {SolnCode::Left_Bottom, u8"╚"}, {SolnCode::Right_Bottom, u8"╝"},
+        {SolnCode::Up, u8"╵"},        {SolnCode::Right, u8"╶"},
+        {SolnCode::Down, u8"╷"},      {SolnCode::Left, u8"╴"},
 
-        {SolnCode::Horizontal, u8"═"},  {SolnCode::Vertical, u8"║"},
+        {SolnCode::Left_Up, u8"╔"},    {SolnCode::Right_Up, u8"╗"},
+        {SolnCode::Left_Down, u8"╚"},  {SolnCode::Right_Down, u8"╝"},
 
-        {SolnCode::Top_Not, u8"╦"},     {SolnCode::Bottom_Not, u8"╩"},
-        {SolnCode::Left_Not, u8"╠"},    {SolnCode::Right_Not, u8"╣"},
+        {SolnCode::Horizontal, u8"═"}, {SolnCode::Vertical, u8"║"},
+
+        {SolnCode::Up_Not, u8"╦"},     {SolnCode::Down_Not, u8"╩"},
+        {SolnCode::Left_Not, u8"╠"},   {SolnCode::Right_Not, u8"╣"},
 
         {SolnCode::All, u8"╬"}};
 };
