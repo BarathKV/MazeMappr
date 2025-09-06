@@ -22,9 +22,7 @@ class Printer {
     void print(const GridMaze& maze) const;
 
     // Function to print the solution to the console
-    void print(const GridSoln& solution) const {
-        // Implementation for printing the solution
-    }
+    void print(const GridSoln& solution) const;
 
     // void save(const GraphMaze& maze, const std::string& filename) const {
     //     // Implementation for saving the maze to a file

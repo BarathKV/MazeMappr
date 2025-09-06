@@ -17,6 +17,7 @@ void randomMouseSolnGen(GridSoln& soln) {
         auto it = visited.begin();
         std::advance(it, rand() % visited.size());
         std::pair<int, int> current = *it;
+        std::cout << "Visiting: " << current.first << "," << current.second << std::endl;
 
         if (current == std::make_pair(soln.maze->getWidth() - 1, soln.maze->getHeight() - 1)) {
             std::cout << "Found a solution!" << std::endl;
