@@ -1,7 +1,7 @@
 #ifndef SOLN_HPP
 #define SOLN_HPP
 
-#include "Path.hpp"
+#include "path.hpp"
 
 #include <string>
 
